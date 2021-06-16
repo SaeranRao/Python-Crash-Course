@@ -5,9 +5,9 @@ class Ship:
         """初始化飞船并设置其初始位置"""
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
-
+        self.settings = ai_game.settings
         #加载飞船图像并获取其外接矩形
-        self.image = pygame.image.load('12\\images\\ship.bmp')
+        self.image = pygame.image.load('alien_invasion\\images\\ship.bmp')
         self.rect = self.image.get_rect()
 
         #对于每艘新飞船，都将其放在屏幕底部的中央
@@ -21,10 +21,10 @@ class Ship:
         self.moving_left = False
     def update(self):
         """根据移动标志调整飞船的位置"""
-        if self.moving_right:
-            self.rect.x += self.settings.ship.ship_speed
-        if self.moving_left:
-            self.rect.x -= self.settings.ship.ship_speed
+        if self.moving_right and self.rect.right < self.screen_rect.right:
+            self.x += self.settings.ship_speed
+        if self.moving_left and self.rect.left > 0:
+            self.x -= self.settings.ship_speed
         self.rect.x = self.x
     def blitme(self):
         """在指定位置绘制飞船。"""
