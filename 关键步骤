@@ -1,0 +1,16 @@
+#上传问题
+    git config --global http.sslVerify "false"
+
+#admin账户
+    ll_admin
+    123456
+
+#进入虚拟环境
+    ll_env\Scripts\activate
+
+#启动服务
+    python manage.py runserver
+
+#部署model
+    makemigrations learning_logs
+    python manage.py migrate
